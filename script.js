@@ -11,10 +11,10 @@ class SortingVisualizer {
 
         // Colors
         this.colors = {
-            default: '#4299E1',
-            comparing: '#F56565',
-            sorted: '#48BB78',
-            pivot: '#764BA2',
+            default: '#ffffffff',
+            comparing: '#ff0000ff',
+            sorted: '#00ff00ff',
+            pivot: '#8f00ff',
             background: '#FFFFFF'
         };
 
@@ -40,7 +40,7 @@ class SortingVisualizer {
             },
             merge: {
                 name: 'Merge Sort',
-                description: 'Merge Sort divides the array into halves, sorts them separately, then merges the sorted halves back together.',
+                description: 'Merge Sort divides the array into halves, sorts them separately, then merges the sorted halves back together. Here red color indicates position updates rather than swaps.',
                 timeComplexity: 'O(n log n)',
                 spaceComplexity: 'O(n)'
             },
@@ -166,7 +166,7 @@ class SortingVisualizer {
             this.ctx.fillRect(x, y, barWidth - 2, barHeight);
 
             // Add subtle border
-            this.ctx.strokeStyle = '#E2E8F0';
+            this.ctx.strokeStyle = '#000000ff';
             this.ctx.lineWidth = 1;
             this.ctx.strokeRect(x, y, barWidth - 2, barHeight);
         }
@@ -381,11 +381,13 @@ class SortingVisualizer {
         // Copy remaining elements
         while (i < leftArr.length) {
             this.array[k].value = leftArr[i];
+            this.array[k].state = 'default';  
             i++;
             k++;
         }
         while (j < rightArr.length) {
             this.array[k].value = rightArr[j];
+            this.array[k].state = 'default';  
             j++;
             k++;
         }
@@ -416,6 +418,8 @@ class SortingVisualizer {
                 i++;
                 if (i !== j) {
                     await this.swap(i, j);
+                     } else {
+                    this.array[j].state = 'default';  // Reset when no swap needed
                 }
             } else {
                 this.array[j].state = 'default';
