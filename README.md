@@ -149,6 +149,6 @@ Contributions are welcome! Here's how you can help:
 
 ## 📞 Contact
 
-- **Email**: sahasoumyadip1802@gmailcom
+- **Email**: sahasoumyadip1802@gmail.com
 
 ⭐ If you found this project helpful, please consider giving it a star on GitHub!
